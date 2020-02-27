@@ -4,9 +4,9 @@
 ###
 ### Test number: 4      Class Number: 3         Date:   17 to 21 February 2020
 ###
-### Group
+### Group: 2
 ### Student: Bruno Pinto               Number: 201603939
-### Student: ....               Number:...
+### Student: Duarte Melo               Number: 201604476
 ###
 ####################################################################################################################
 ### Complete the code below for the object PhoneBook
@@ -16,57 +16,48 @@
 class PhoneBook:
     ''' Implements a Phone Book '''
     
-    def __init__(self):
+    def __init__(self, dict={}):
         ''' initializes phone book with appropriate data structure '''
         # complete
-        self.list = []
-        self.listMail = []
+        self.dict = dict
     
-    def add_phone(self, name, number, email):
+    def add_phone(self, name, number):
         # complete
-        self.list.append({'name' : name, 'number': number})
-        self.listMail.append({'name' : name, 'email' : email})
+        self.dict[name] = number
     
     def print_book(self):
-        for i in self.list:
-            print(i)
+            print(self.dict)
     
     def search_by_number(self, number):
-        list_search = []
-        for i in self.list:
-            if i['number'] == number:
-                list_search.append(i)
-        return list_search
+        for name, num in self.dict.items():
+            if(num == number):
+                return name
+        return none
 
     def search_by_name(self, name):
-        list_search = []
-        for i in self.list:
-            if i['name'] == name:
-                list_search.append(i)
-        return list_search
-    
-    def search_by_email(self, email):
-        list_search = []
-        for i in self.list:
-            if i['email'] == email:
-                list_search.append(i)
-        return list_search
+        return self.dict[name]
         
-    def copy(self):
-        pass
+    def copy(self): 
+        deepCopy = PhoneBook()
+        deepCopy.dict = {name: number for name, number in self.dict.items()}
+        return deepCopy
 
 
 if __name__ == "__main__":
     ''' test code here '''
     # complete
     phone = PhoneBook()
-    phone.add_phone("Bruno", "91919", "bruno@gjaj.com")
-    phone.add_phone("Bruno1", "123", "bruno@gmail.com")
-    phone.add_phone("Bruno2", "1234", "pinto@gmail.com")
-    phone.add_phone("Bruno", "123", "bruno1k@gmail.com")
+    phone.add_phone("Bruno", "91919")
+    phone.add_phone("Duarte", "123")
+    phone.add_phone("Pedro", "1234")
+    phone.add_phone("Joao", "123")
     phone.print_book()
     print(phone.search_by_name('Bruno'))
     print(phone.search_by_number('1234'))
-    print(phone.search_by_email('bruno@gmail.com'))
+    phone2 = phone.copy()
+    phone.add_phone("Marta", "1456")
+    phone2.add_phone("Joana", "1456")
+    phone.print_book()
+    phone2.print_book()
     
     
