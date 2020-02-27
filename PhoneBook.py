@@ -54,6 +54,7 @@ class PhoneBook:
     def copy(self): 
         deepCopy = PhoneBook()
         deepCopy.dict = {name: number for name, number in self.dict.items()}
+        deepCopy.dictMail = {name: mail for name, mail in self.dictMail.items()}
         return deepCopy
 
 
@@ -70,5 +71,10 @@ if __name__ == "__main__":
     print(phone.search_by_number('123'))
     print(phone.search_by_email('bruno@gmail.com'))
     print(phone.search_by_email('bruno1k@gmail.com'))
-    
+    phone2 = phone.copy()
+    phone2.print_book()
+    phone.add_phone("Bruno12", "1234")
+    phone2.add_phone("BrunoPinto", "1234123")
+    phone2.print_book()
+    phone.print_book()
     
