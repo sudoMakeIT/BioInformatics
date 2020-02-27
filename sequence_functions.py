@@ -222,14 +222,14 @@ def insert_prot_ord (prot, list_prots):
 
 
 def test_frequency():  
-    seq_aa = raw_input("Protein sequence:")
+    seq_aa = input("Protein sequence:")
     freq_aa = frequency(seq_aa)
     list_f = sorted(freq_aa.items(), key=lambda x: x[1], reverse = True)
     for (k,v) in list_f:
         print("Aminoacid:", k, ":", v)
    
 def test_all():  
-    seq = raw_input("Insert DNA sequence:")
+    seq = input("Insert DNA sequence:")
     if validate_dna (seq):
         print ("Valid sequence")
         print ("Transcription: ", transcription (seq))
@@ -240,7 +240,7 @@ def test_all():
     else: print("DNA sequence is not valid")
 
 def test_files():
-    fname = raw_input("Insert input filename:")
+    fname = input("Insert input filename:")
     seq = read_seq_from_file(fname)
     if validate_dna (seq):
         print ("Valid sequence")

@@ -19,38 +19,38 @@ class PhoneBook:
     def __init__(self):
         ''' initializes phone book with appropriate data structure '''
         # complete
-        self.list = []
-        self.listMail = []
+        self.dict = {}
+        self.dictMail = {}
     
-    def add_phone(self, name, number, email):
+    def add_phone(self, name, number):
         # complete
-        self.list.append({'name' : name, 'number': number})
-        self.listMail.append({'name' : name, 'email' : email})
+        self.dict[name] = number
     
+    def add_mail(self, name, mail):
+        # complete
+        self.dictMail[name] = mail
+    
+
     def print_book(self):
-        for i in self.list:
-            print(i)
-    
-    def search_by_number(self, number):
-        list_search = []
-        for i in self.list:
-            if i['number'] == number:
-                list_search.append(i)
-        return list_search
+        print(self.dict)
+        print(self.dictMail)
+
 
     def search_by_name(self, name):
-        list_search = []
-        for i in self.list:
-            if i['name'] == name:
-                list_search.append(i)
-        return list_search
+        return self.dict[name] + " " + self.dictMail[name]
     
-    def search_by_email(self, email):
-        list_search = []
-        for i in self.list:
-            if i['email'] == email:
-                list_search.append(i)
-        return list_search
+
+    def search_by_number(self, number):
+        for x, y in self.dict.items():
+            if y == number:
+                return x
+        return ""
+
+    def search_by_email(self, mail):
+        for x, y in self.dictMail.items():
+            if y == mail:
+                return x
+        return ""
         
     def copy(self):
         pass
@@ -60,13 +60,14 @@ if __name__ == "__main__":
     ''' test code here '''
     # complete
     phone = PhoneBook()
-    phone.add_phone("Bruno", "91919", "bruno@gjaj.com")
-    phone.add_phone("Bruno1", "123", "bruno@gmail.com")
-    phone.add_phone("Bruno2", "1234", "pinto@gmail.com")
-    phone.add_phone("Bruno", "123", "bruno1k@gmail.com")
+    phone.add_phone("Bruno", "91919")
+    phone.add_phone("Bruno1", "123")
+    phone.add_mail("Bruno2", "pinto@gmail.com")
+    phone.add_mail("Bruno", "bruno1k@gmail.com")
     phone.print_book()
     print(phone.search_by_name('Bruno'))
-    print(phone.search_by_number('1234'))
+    print(phone.search_by_number('123'))
     print(phone.search_by_email('bruno@gmail.com'))
+    print(phone.search_by_email('bruno1k@gmail.com'))
     
     
