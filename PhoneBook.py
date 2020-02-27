@@ -4,9 +4,9 @@
 ###
 ### Test number: 4      Class Number: 3         Date:   17 to 21 February 2020
 ###
-### Group
+### Group: 2
 ### Student: Bruno Pinto               Number: 201603939
-### Student: ....               Number:...
+### Student: Duarte Melo               Number: 201604476
 ###
 ####################################################################################################################
 ### Complete the code below for the object PhoneBook
@@ -30,7 +30,6 @@ class PhoneBook:
         # complete
         self.dictMail[name] = mail
     
-
     def print_book(self):
         print(self.dict)
         print(self.dictMail)
@@ -52,8 +51,10 @@ class PhoneBook:
                 return x
         return ""
         
-    def copy(self):
-        pass
+    def copy(self): 
+        deepCopy = PhoneBook()
+        deepCopy.dict = {name: number for name, number in self.dict.items()}
+        return deepCopy
 
 
 if __name__ == "__main__":
