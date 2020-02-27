@@ -16,26 +16,40 @@
 class PhoneBook:
     ''' Implements a Phone Book '''
     
-    def __init__(self, dict={}):
+    def __init__(self):
         ''' initializes phone book with appropriate data structure '''
         # complete
-        self.dict = dict
+        self.dict = {}
+        self.dictMail = {}
     
     def add_phone(self, name, number):
         # complete
         self.dict[name] = number
     
-    def print_book(self):
-            print(self.dict)
+    def add_mail(self, name, mail):
+        # complete
+        self.dictMail[name] = mail
     
-    def search_by_number(self, number):
-        for name, num in self.dict.items():
-            if(num == number):
-                return name
-        return none
+    def print_book(self):
+        print(self.dict)
+        print(self.dictMail)
+
 
     def search_by_name(self, name):
-        return self.dict[name]
+        return self.dict[name] + " " + self.dictMail[name]
+    
+
+    def search_by_number(self, number):
+        for x, y in self.dict.items():
+            if y == number:
+                return x
+        return ""
+
+    def search_by_email(self, mail):
+        for x, y in self.dictMail.items():
+            if y == mail:
+                return x
+        return ""
         
     def copy(self): 
         deepCopy = PhoneBook()
@@ -47,16 +61,13 @@ if __name__ == "__main__":
     # complete
     phone = PhoneBook()
     phone.add_phone("Bruno", "91919")
-    phone.add_phone("Duarte", "123")
-    phone.add_phone("Pedro", "1234")
-    phone.add_phone("Joao", "123")
+    phone.add_phone("Bruno1", "123")
+    phone.add_mail("Bruno2", "pinto@gmail.com")
+    phone.add_mail("Bruno", "bruno1k@gmail.com")
     phone.print_book()
     print(phone.search_by_name('Bruno'))
-    print(phone.search_by_number('1234'))
-    phone2 = phone.copy()
-    phone.add_phone("Marta", "1456")
-    phone2.add_phone("Joana", "1456")
-    phone.print_book()
-    phone2.print_book()
+    print(phone.search_by_number('123'))
+    print(phone.search_by_email('bruno@gmail.com'))
+    print(phone.search_by_email('bruno1k@gmail.com'))
     
     
