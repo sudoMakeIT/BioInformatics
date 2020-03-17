@@ -1,6 +1,4 @@
 ###Task2
-
-
 def simpleBooyerMoore(seq, pattern):
     """Very simplified version of Booyer-Moore with the BCR rule"""
     alphabet = "".join(set(list(seq)))    
@@ -36,3 +34,42 @@ def repeated_subsequences_frequency(dna_seq, k = 10):
             if(len(index) > 0):
                 res[temp] =len(index)
     return res
+
+#Task3
+# -*- coding: utf-8 -*-
+import re
+
+def get_regex(info):
+    m = re.search("(sp\|[A-Z0-9]+\|[A-Z0-9_]+)", info)
+    if m:
+        found = m.group(1)
+    return found
+
+
+def read_Fasta (filename):
+    from re import sub, search
+
+    res = []
+    sequence = None
+    info = None
+    dic = {}
+    fh = open(filename)
+    i = 0
+    for line in fh:
+        if search(">.*", line):
+                if(i!=0):
+                    infoKey = get_regex(info)
+                    dic[infoKey] = sequence
+                if sequence is not None and info is not None and sequence != "":
+                    res.append(sequence)
+                info = line              
+                sequence = ""
+        else:
+            if sequence is None: return None
+            else: sequence += sub("\s","",line)
+        i += 1
+
+    if sequence is not None and info is not None and sequence != "":
+                    res.append(sequence)
+    fh.close()
+    return dic
