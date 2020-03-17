@@ -40,7 +40,7 @@ def repeated_subsequences_frequency(dna_seq, k = 10):
 import re
 
 def get_regex(info):
-    m = re.search("(sp\|[A-Z0-9]+\|[A-Z0-9_]+)", info)
+    m = re.search("(sp\\|[A-Z0-9]+\\|[A-Z0-9_]+)", info)
     if m:
         found = m.group(1)
     return found
