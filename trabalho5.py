@@ -65,7 +65,7 @@ def read_Fasta (filename):
                 sequence = ""
         else:
             if sequence is None: return None
-            else: sequence += sub("\s","",line)
+            else: sequence += sub("\\s","",line)
         i += 1
 
     if sequence is not None and info is not None and sequence != "":
@@ -73,4 +73,18 @@ def read_Fasta (filename):
     fh.close()
     return dic
 
+#Task4
+def find_ap_nuclease():
+    match_keys = []
+    dic_seq = read_Fasta("PS00727.fasta")
+    from re import search
+    regexp = "N.G.R[LIVM]D[LIVMFYH].[LV].S"
+    for seq in dic_seq:
+        mo = search(regexp, dic_seq[seq])
+        if (mo != None):
+            match_keys.append(seq)
+    return match_keys
+
 print(repeated_subsequences_frequency("ATATATTATATAT",3))
+print(read_Fasta("PS00727.fasta"))
+print(find_ap_nuclease())
