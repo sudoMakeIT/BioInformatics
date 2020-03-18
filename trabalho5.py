@@ -72,3 +72,5 @@ def read_Fasta (filename):
         res.append(sequence)
     fh.close()
     return dic
+
+print(repeated_subsequences_frequency("ATATATTATATAT",3))
