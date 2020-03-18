@@ -32,11 +32,10 @@ def repeated_subsequences_frequency(dna_seq, k = 10):
         if temp not in res.keys():
             index = simpleBooyerMoore(dna_seq,temp)
             if(len(index) > 0):
-                res[temp] =len(index)
+                res[temp] = len(index)
     return res
 
 #Task3
-# -*- coding: utf-8 -*-
 import re
 
 def get_regex(info):
@@ -70,6 +69,6 @@ def read_Fasta (filename):
         i += 1
 
     if sequence is not None and info is not None and sequence != "":
-                    res.append(sequence)
+        res.append(sequence)
     fh.close()
     return dic
