@@ -194,7 +194,15 @@ def max_mat(mat):
     maxcol = 0
     # returns the cell with maximum value
     # complete here...
+    
+    for i in range(0,len(mat)):
+        for j in range(0,len(mat[0])):
+            if mat[i][j] > maxval:
+                maxval = mat[i][j]
+                maxrow = i
+                maxcol = j
     return (maxrow,maxcol)
+
 
 def identity(seq1, seq2, alphabet = "ACGT"):
     '''calculate the identity score between seq1 and seq2 '''
@@ -225,7 +233,6 @@ def test_prot():
     # plot the score of alignment using affine gap score with gap value.
     print(score_affinegap(seq1, seq2, sm, g))
 
-  
 def test_global_alig():
     sm = read_submat_file("blosum62.mat")
     seq1 = "PHSWG"
@@ -257,7 +264,6 @@ def test_local_alig():
     best_score = S[i][j]
     print ("best score: " + str(best_score))
     
-
 def test_DNA_GlobalAlign():
     # test function
     # Test sequences seq1 and seq2
@@ -275,16 +281,26 @@ def test_DNA_GlobalAlign():
     alig = recover_align(T, seq1, seq2)
     print(alig[0])
     print(alig[1])
-    
-    
-    
-    
-#def test_Prot_LocalAlign():
+   
+def test_Prot_LocalAlign():
     # Test local alignment SW to sequences seq1 and seq2
-
+    seq1 = "ANDDR"
+    seq2 = "AARRD"
+    sm = create_submat(3,-1,"ADNR")
+    resSW = smith_Waterman(seq1, seq2, sm, -8)
+    S = resSW[0]
+    T = resSW[1]
+    score = resSW[2]
+    alinL= recover_align_local(S, T, seq1, seq2)
+    print(alinL[0])
+    print(alinL[1])
+    i, j = max_mat(S)
+    best_score = S[i][j]
+    print ("best score: " + str(best_score))
 
 #test_DNA()
 #test_prot()
 #test_global_alig()
 #test_local_alig()
 #test_DNA_GlobalAlign()
+#test_Prot_LocalAlign()
