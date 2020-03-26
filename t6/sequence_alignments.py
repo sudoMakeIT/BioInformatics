@@ -307,7 +307,7 @@ def test_Prot_LocalAlign():
     i, j = max_mat(S)
     best_score = S[i][j]
     print ("best score: " + str(best_score))
-    print_mat(S)
+
 
 #test_DNA()
 #test_prot()
