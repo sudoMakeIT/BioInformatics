@@ -197,20 +197,29 @@ def max_mat(mat):
     
     for i in range(0,len(mat)):
         for j in range(0,len(mat[0])):
-            if mat[i][j] > maxval:
+            if mat[i][j] >= maxval:
                 maxval = mat[i][j]
                 maxrow = i
                 maxcol = j
     return (maxrow,maxcol)
 
-
 def identity(seq1, seq2, alphabet = "ACGT"):
     '''calculate the identity score between seq1 and seq2 '''
     # complete here ...
+    sm = create_submat(1,0,alphabet)
+    # solve the NW algorithm with gap p
+    resNW = needleman_Wunsch(seq1, seq2, sm, 0)
+    S = resNW[0]
+    T = resNW[1]
+    # obtain the score of the alignment: using matrix cells and score alignment function
+    score = S[len(seq1)][len(seq2)]
+    print(score)
+    return float(score)/max(len(seq1),len(seq1))
 
 def print_mat (mat):
     for i in range(0, len(mat)):
         print(mat[i]) 
+
 
 ### tests
 
@@ -231,7 +240,8 @@ def test_prot():
     # plot the score of alignment using the subtitution matrix blosum62.mat
     print(score_align(seq1, seq2, sm, g))
     # plot the score of alignment using affine gap score with gap value.
-    print(score_affinegap(seq1, seq2, sm, g))
+    r = -1
+    print(score_affinegap(seq1, seq2, sm, g,r))
 
 def test_global_alig():
     sm = read_submat_file("blosum62.mat")
@@ -297,6 +307,7 @@ def test_Prot_LocalAlign():
     i, j = max_mat(S)
     best_score = S[i][j]
     print ("best score: " + str(best_score))
+    print_mat(S)
 
 #test_DNA()
 #test_prot()
