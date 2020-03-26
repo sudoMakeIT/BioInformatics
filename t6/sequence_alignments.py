@@ -23,8 +23,8 @@ def read_submat_file (filename):
     for i in range(0, ns): 
         alphabet.append(tokens[i][0])
     for i in range(0,ns):
-        line = f.readline();
-        tokens = line.split("\t");
+        line = f.readline()
+        tokens = line.split("\t")
         for j in range(0, len(tokens)):
             k = alphabet[i]+alphabet[j]
             sm[k] = int(tokens[j])
@@ -258,22 +258,33 @@ def test_local_alig():
     print ("best score: " + str(best_score))
     
 
-#def test_DNA_GlobalAlign():
+def test_DNA_GlobalAlign():
     # test function
     # Test sequences seq1 and seq2
+    seq1 = "TACT"
+    seq2 = "ACTA"
     # create a substitution matrix with the match and mismatch values
+    sm = create_submat(3,-1,"ACGT")
     # solve the NW algorithm with gap p
+    resNW = needleman_Wunsch(seq1, seq2, sm, -3)
+    S = resNW[0]
+    T = resNW[1]
     # obtain the score of the alignment: using matrix cells and score alignment function
+    score = S[len(seq1)][len(seq2)]
     # recover the alignment and print the aligned sequences 1 and 2
+    alig = recover_align(T, seq1, seq2)
+    print(alig[0])
+    print(alig[1])
     
-    # complete here ...
+    
+    
     
 #def test_Prot_LocalAlign():
     # Test local alignment SW to sequences seq1 and seq2
 
 
 #test_DNA()
-test_prot()
+#test_prot()
 #test_global_alig()
 #test_local_alig()
-
+#test_DNA_GlobalAlign()
