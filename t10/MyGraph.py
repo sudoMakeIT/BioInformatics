@@ -11,31 +11,33 @@
 ####################################################################################################################
 
 
+'''
+
+1.
+A análise de redes de correlação gênica é um método de bioinformática para descrever os padrões
+de correlação entre genes em amostras de microarranjos que pode ser usado para encontrar clusters
+de genes correlacionados, para relacionar clusters entre si e para cálculo de medidas de associação
+ao cluster.
+A título de exemplo, as proteínas mitocondriais são codificadas tanto pelo DNA mitocondrial como
+pelo DNA nuclear, isto implica uma comunicação controlada entre os dois genomas.
+Uma vez que as mitocôndrias coordenam várias actividades celulares essenciais à vida,
+nomeadamente a produção de energia e a morte celular, a desregulação desta comunicação está
+implicada em muitas doenças complexas como doenças neurodegenerativas, cancro e diabetes. As redes
+de correlação vêm facilitar os métodos de triagem de genes baseados em rede que podem ser usados ​​
+para identificar biomarcadores candidatos a alvos terapêuticos.
+A construção da rede é conceitualmente simples: os nós representam genes e os nós são conectados
+se os genes correspondentes forem co-expressos significativamente em amostras de tecido escolhidas
+de forma adequada.
+As duas etapas principais para a construção de uma rede de correlação gênica são: o cálculo da
+medida de correlação para cada par de genes (no exemplo fornecido pelo professor, a correlação de Pearson)
+e a seleção de um limiar de significância (por exemplo ter um valor de correlação superior a 0.5).
+Esses dados são representados numa matriz. Se tivermos os valores de expressão gênica de m genes
+e n amostras, os dados de entrada seriam uma matriz m × n, chamada matriz de expressão.
+
+'''
 # Graph represented as adjacency list using a dictionary
 # keys are vertices
 # values of the dictionary represent the list of adjacent vertices of the key node
-
-# 1.
-# A análise de redes de correlação gênica é um método de bioinformática para descrever os padrões
-# de correlação entre genes em amostras de microarranjos que pode ser usado para encontrar clusters
-# de genes correlacionados, para relacionar clusters entre si e para cálculo de medidas de associação
-# ao cluster.
-# A título de exemplo, as proteínas mitocondriais são codificadas tanto pelo DNA mitocondrial como
-# pelo DNA nuclear, isto implica uma comunicação controlada entre os dois genomas.
-# Uma vez que as mitocôndrias coordenam várias actividades celulares essenciais à vida,
-# nomeadamente a produção de energia e a morte celular, a desregulação desta comunicação está
-# implicada em muitas doenças complexas como doenças neurodegenerativas, cancro e diabetes. As redes
-# de correlação vêm facilitar os métodos de triagem de genes baseados em rede que podem ser usados ​​
-# para identificar biomarcadores candidatos a alvos terapêuticos.
-# A construção da rede é conceitualmente simples: os nós representam genes e os nós são conectados
-# se os genes correspondentes forem co-expressos significativamente em amostras de tecido escolhidas
-# de forma adequada.
-# As duas etapas principais para a construção de uma rede de correlação gênica são: o cálculo da
-# medida de correlação para cada par de genes (no exemplo fornecido pelo professor, a correlação de Pearson)
-# e a seleção de um limiar de significância (por exemplo ter um valor de correlação superior a 0.5).
-# Esses dados são representados numa matriz. Se tivermos os valores de expressão gênica de m genes
-# e n amostras, os dados de entrada seriam uma matriz m × n, chamada matriz de expressão.
-
 class MyGraph:
     def __init__(self, g={}):
         ''' Constructor - takes dictionary to fill the graph as input; default is empty dictionary '''
