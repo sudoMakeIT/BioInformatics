@@ -1,6 +1,34 @@
 import getopt, sys
 
-  
+'''
+usage: python3 motif.py -i demo.fasta -f 2 -n 6 -m 10
+
+result:
+
+GCTATA 0.5                                                                                                              
+ATAAAA 0.5                                                                                                              
+TAAAAG 0.5                                                                                                              
+AAAAGG 0.5                                                                                                              
+TCCTCA 0.5                                                                                                              
+CCTCAC 0.5                                                                                                             
+CAGGGC 0.5                                                                                                             
+GCTGCT 0.75                                                                                                            
+CTGCTG 0.5                                                                                                             
+TGCTGC 0.5                                                                                                            
+ATAAAAG 0.5                                                                                                          
+TAAAAGG 0.5                                                                                                        
+TCCTCAC 0.5                                                                                                  
+GCTGCTG 0.5                                                                                                        
+CTGCTGC 0.5                                                                                                        
+TGCTGCT 0.5                                                                                                           
+ATAAAAGG 0.5                                                                                                           
+GCTGCTGC 0.5                                                                                                 
+CTGCTGCT 0.5                                                                                                            
+GCTGCTGCT 0.5
+
+
+'''  
+
 def read_from_file(filename):
     seqs = []
     fh = open(filename, "r")
